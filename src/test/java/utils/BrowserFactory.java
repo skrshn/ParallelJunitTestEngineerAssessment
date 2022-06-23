@@ -3,6 +3,7 @@ package utils;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import steps.PageInitializers;
 
@@ -21,7 +22,7 @@ public class BrowserFactory {
             switch (ConfigReader.getPropertyValue("browser")) {
                 case "chrome":
                     WebDriverManager.chromedriver().setup();
-                    driverPool.set(new ChromeDriver());
+                    driverPool.set(new ChromeDriver(new ChromeOptions().setHeadless(true)));
                     break;
                 case "firefox":
                     WebDriverManager.firefoxdriver().setup();
