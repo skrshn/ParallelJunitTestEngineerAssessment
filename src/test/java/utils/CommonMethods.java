@@ -12,18 +12,16 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.Date;
-import java.util.Locale;
 
 public class CommonMethods extends PageInitializers {
     public static WebDriver driver;
 
     public void launchBrowser() {
         driver = BrowserFactory.get();
-        initializePageObjects();
+        //initializePageObjects();
     }
 
     public static void sendText(WebElement element, String textToSend) {
-
         element.clear();
         element.sendKeys(textToSend);
     }
@@ -41,6 +39,10 @@ public class CommonMethods extends PageInitializers {
         getWait().until(ExpectedConditions.elementToBeClickable(element));
     }
 
+    public static void waitForVisibility(WebElement element) {
+        getWait().until(ExpectedConditions.visibilityOf(element));
+    }
+
     public static void click(WebElement element) {
         waitForClickability(element);
         element.click();
@@ -51,11 +53,13 @@ public class CommonMethods extends PageInitializers {
         return js;
     }
 
-    public static void highlightText(WebElement element,String color) {
-        getJSExecutor().executeScript("arguments[0].style.background='"+color.toLowerCase()+"'", element);
+    public static void highlightText(WebElement element, String color) {
+        waitForVisibility(element);
+        getJSExecutor().executeScript("arguments[0].style.background='" + color.toLowerCase() + "'", element);
     }
 
     public static void jsClick(WebElement element) {
+        waitForVisibility(element);
         getJSExecutor().executeScript("arguments[0].click;", element);
     }
 

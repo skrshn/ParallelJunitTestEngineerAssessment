@@ -12,5 +12,5 @@ Feature: Testing website
     And  In Billing details user enters all mandatory fields and Continue
     And  user adds In Payment Method and adds a comment
     And  In Payment Method, user selects Agree radio button and Continue
-    And  In Payment Method, user highlights the error message in Yellow
+#    And  In Payment Method, user highlights the error message in Yellow
     When user Verify that "Warning: Payment method required!" and closes the browser

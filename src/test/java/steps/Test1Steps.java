@@ -10,6 +10,8 @@ import pages.HomePage;
 import utils.CommonMethods;
 
 public class Test1Steps extends CommonMethods {
+    HomePage homePage = PageFactory.initElements(driver, HomePage.class);
+
     @Given("user navigates to tutorials ninja website and verify that the title is {string}")
     public void userNavigatesToTutorialsNinjaWebsiteAndVerifyThatTheTitleIs(String expectedTitle) {
         Assert.assertEquals(expectedTitle, driver.getTitle());
@@ -59,10 +61,8 @@ public class Test1Steps extends CommonMethods {
         sendText(homePage.city, "Miami");
         sendText(homePage.zipCodeField, "15125");
         Thread.sleep(1000);
-
         selectByVisibleText(homePage.countryDropdown, "Greece");
         Thread.sleep(1000);
-
         selectByVisibleText(homePage.regionDropdown, "Attica");
         Thread.sleep(1000);
 
@@ -71,29 +71,27 @@ public class Test1Steps extends CommonMethods {
 
     @And("user adds In Payment Method and adds a comment")
     public void userAddsInPaymentMethodAndAddsAComment() throws InterruptedException {
-
         Thread.sleep(1000);
         sendText(homePage.commentArea, "Comment has been loaded");
     }
 
     @And("In Payment Method, user selects Agree radio button and Continue")
     public void inPaymentMethodUserSelectsAgreeRadioButtonAndContinue() throws InterruptedException {
-        Thread.sleep(1000);
-
+        Thread.sleep(2000);
         click(homePage.agreeButton);
-        Thread.sleep(1000);
-
+        Thread.sleep(3000);
         click(homePage.continueButton3);
     }
 
-    @And("In Payment Method, user highlights the error message in Yellow")
-    public void inPaymentMethodUserHighlightsTheErrorMessageInYellow() throws InterruptedException {
-        Thread.sleep(1000);
-        highlightText(homePage.errorMessage, "ReD");
-    }
+//    @And("In Payment Method, user highlights the error message in Yellow")
+//    public void inPaymentMethodUserHighlightsTheErrorMessageInYellow() throws InterruptedException {
+//        Thread.sleep(4000);
+//        highlightText(homePage.errorMessage, "yellOw");
+//    }
 
     @Then("user Verify that {string} and closes the browser")
-    public void userVerifyThatAndClosesTheBrowser(String expectedErrorMessage) {
+    public void userVerifyThatAndClosesTheBrowser(String expectedErrorMessage) throws InterruptedException {
+        Thread.sleep(3000);
         Assert.assertTrue(homePage.errorMessage.getText().contains(expectedErrorMessage));
     }
 }
