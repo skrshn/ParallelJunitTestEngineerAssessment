@@ -1,5 +1,6 @@
 package utils;
 
+import io.cucumber.java.Scenario;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.PageFactory;
@@ -54,7 +55,7 @@ public class CommonMethods { //extends PageInitializers
         return js;
     }
 
-    public static void highlightText(WebElement element,String color) {
+    public static void highlightText(WebElement element, String color) {
         getJSExecutor().executeScript("arguments[0].style.background='" + color.toLowerCase() + "'", element);
     }
 

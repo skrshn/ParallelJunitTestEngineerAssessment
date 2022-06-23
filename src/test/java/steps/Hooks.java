@@ -14,7 +14,7 @@ public class Hooks extends CommonMethods {
         launchBrowser();
     }
 
-    //   @AfterStep()
+//    @AfterStep()
 //    public void afterStep(Scenario scenario) {
 //        byte[] pic;
 //        if (scenario.isFailed()) {
