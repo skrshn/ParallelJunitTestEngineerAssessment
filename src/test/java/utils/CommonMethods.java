@@ -13,12 +13,12 @@ import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.Date;
 
-public class CommonMethods extends PageInitializers {
+public class CommonMethods{ //extends PageInitializers
     public static WebDriver driver;
 
     public void launchBrowser() {
         driver = BrowserFactory.get();
-        //initializePageObjects();
+       // initializePageObjects();
     }
 
     public static void sendText(WebElement element, String textToSend) {
@@ -44,7 +44,6 @@ public class CommonMethods extends PageInitializers {
     }
 
     public static void click(WebElement element) {
-        waitForClickability(element);
         element.click();
     }
 
@@ -54,7 +53,6 @@ public class CommonMethods extends PageInitializers {
     }
 
     public static void highlightText(WebElement element, String color) {
-        waitForVisibility(element);
         getJSExecutor().executeScript("arguments[0].style.background='" + color.toLowerCase() + "'", element);
     }
 

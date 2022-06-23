@@ -5,12 +5,14 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
-import org.openqa.selenium.support.PageFactory;
 import pages.HomePage;
 import utils.CommonMethods;
 
 public class Test1Steps extends CommonMethods {
-    HomePage homePage = PageFactory.initElements(driver, HomePage.class);
+
+//    PageInitializers.initializePageObjects();
+//    initializePageObjects();
+    HomePage homePage = new HomePage();
 
     @Given("user navigates to tutorials ninja website and verify that the title is {string}")
     public void userNavigatesToTutorialsNinjaWebsiteAndVerifyThatTheTitleIs(String expectedTitle) {
@@ -51,8 +53,7 @@ public class Test1Steps extends CommonMethods {
     }
 
     @And("In Billing details user enters all mandatory fields and Continue")
-    public void inBillingDetailsUserEntersAllMandatoryFieldsAndContinue() throws InterruptedException {
-        Thread.sleep(1000);
+    public void inBillingDetailsUserEntersAllMandatoryFieldsAndContinue(){
         sendText(homePage.firstName, "Zak");
         sendText(homePage.lastName, "Shn");
         sendText(homePage.email, "zak@zak.com");
@@ -60,26 +61,19 @@ public class Test1Steps extends CommonMethods {
         sendText(homePage.address, "1111 New York St");
         sendText(homePage.city, "Miami");
         sendText(homePage.zipCodeField, "15125");
-        Thread.sleep(1000);
         selectByVisibleText(homePage.countryDropdown, "Greece");
-        Thread.sleep(1000);
         selectByVisibleText(homePage.regionDropdown, "Attica");
-        Thread.sleep(1000);
-
         click(homePage.continueButton2);
     }
 
     @And("user adds In Payment Method and adds a comment")
-    public void userAddsInPaymentMethodAndAddsAComment() throws InterruptedException {
-        Thread.sleep(1000);
+    public void userAddsInPaymentMethodAndAddsAComment(){
         sendText(homePage.commentArea, "Comment has been loaded");
     }
 
     @And("In Payment Method, user selects Agree radio button and Continue")
-    public void inPaymentMethodUserSelectsAgreeRadioButtonAndContinue() throws InterruptedException {
-        Thread.sleep(2000);
+    public void inPaymentMethodUserSelectsAgreeRadioButtonAndContinue() {
         click(homePage.agreeButton);
-        Thread.sleep(3000);
         click(homePage.continueButton3);
     }
 
@@ -90,8 +84,7 @@ public class Test1Steps extends CommonMethods {
 //    }
 
     @Then("user Verify that {string} and closes the browser")
-    public void userVerifyThatAndClosesTheBrowser(String expectedErrorMessage) throws InterruptedException {
-        Thread.sleep(3000);
-        Assert.assertTrue(homePage.errorMessage.getText().contains(expectedErrorMessage));
+    public void userVerifyThatAndClosesTheBrowser(String expectedErrorMessage) {
+        Assert.assertTrue(getText(homePage.errorMessage).contains(expectedErrorMessage));
     }
 }

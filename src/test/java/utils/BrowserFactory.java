@@ -4,6 +4,10 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import steps.PageInitializers;
+
+import java.time.Duration;
+import java.util.concurrent.TimeUnit;
 
 public class BrowserFactory {
     private static ThreadLocal<WebDriver> driverPool = new ThreadLocal<>();
@@ -29,6 +33,7 @@ public class BrowserFactory {
             driverPool.get().get(ConfigReader.getPropertyValue("url"));
             driverPool.get().manage().deleteAllCookies();
             driverPool.get().manage().window().maximize();
+            driverPool.get().manage().timeouts().implicitlyWait(Constants.IMPLICIT_WAIT, TimeUnit.SECONDS);
         }
         return driverPool.get();
     }
