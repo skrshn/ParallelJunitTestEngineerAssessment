@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
-Test set: Testing website #1
+Test set: runners.CucumberRunner
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 21.759 s - in Testing website #1
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 38.973 s - in runners.CucumberRunner
