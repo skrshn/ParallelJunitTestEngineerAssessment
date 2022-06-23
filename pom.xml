@@ -150,7 +150,7 @@
                         <configuration>
                             <parallel>methods</parallel>
                             <perCoreThreadCount>false</perCoreThreadCount>
-                            <threadCountMethods>3</threadCountMethods>
+                            <threadCountMethods>2</threadCountMethods>
                             <includes>
                                 <include>**/*CucumberRunner.java</include>
                             </includes>

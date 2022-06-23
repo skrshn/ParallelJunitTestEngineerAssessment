@@ -10,9 +10,6 @@ import pages.HomePage;
 import utils.CommonMethods;
 
 public class Test1Steps extends CommonMethods {
-
-    //    PageInitializers.initializePageObjects();
-//    initializePageObjects();
     HomePage homePage = PageFactory.initElements(driver, HomePage.class);
 
     @Given("user navigates to tutorials ninja website and verify that the title is {string}")
@@ -82,6 +79,7 @@ public class Test1Steps extends CommonMethods {
 
     @Then("user Verify that {string} and closes the browser")
     public void userVerifyThatAndClosesTheBrowser(String expectedErrorMessage) {
+        //highlightText(homePage.errorMessage, "grEen");
         Assert.assertTrue(getText(homePage.errorMessage).contains(expectedErrorMessage));
     }
 }

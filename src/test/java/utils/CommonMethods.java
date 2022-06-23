@@ -54,9 +54,8 @@ public class CommonMethods { //extends PageInitializers
         return js;
     }
 
-    public static void highlightText(String color) {
-        HomePage homePage = PageFactory.initElements(driver, HomePage.class);
-        getJSExecutor().executeScript("arguments[0].style.background='" + color.toLowerCase() + "'", homePage.errorMessage);
+    public static void highlightText(WebElement element,String color) {
+        getJSExecutor().executeScript("arguments[0].style.background='" + color.toLowerCase() + "'", element);
     }
 
     public static void jsClick(WebElement element) {
