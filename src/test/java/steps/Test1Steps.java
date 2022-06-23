@@ -5,14 +5,15 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.support.PageFactory;
 import pages.HomePage;
 import utils.CommonMethods;
 
 public class Test1Steps extends CommonMethods {
 
-//    PageInitializers.initializePageObjects();
+    //    PageInitializers.initializePageObjects();
 //    initializePageObjects();
-    HomePage homePage = new HomePage();
+    HomePage homePage = PageFactory.initElements(driver, HomePage.class);
 
     @Given("user navigates to tutorials ninja website and verify that the title is {string}")
     public void userNavigatesToTutorialsNinjaWebsiteAndVerifyThatTheTitleIs(String expectedTitle) {
@@ -53,7 +54,7 @@ public class Test1Steps extends CommonMethods {
     }
 
     @And("In Billing details user enters all mandatory fields and Continue")
-    public void inBillingDetailsUserEntersAllMandatoryFieldsAndContinue(){
+    public void inBillingDetailsUserEntersAllMandatoryFieldsAndContinue() throws InterruptedException {
         sendText(homePage.firstName, "Zak");
         sendText(homePage.lastName, "Shn");
         sendText(homePage.email, "zak@zak.com");
@@ -61,13 +62,15 @@ public class Test1Steps extends CommonMethods {
         sendText(homePage.address, "1111 New York St");
         sendText(homePage.city, "Miami");
         sendText(homePage.zipCodeField, "15125");
+        Thread.sleep(2000);
         selectByVisibleText(homePage.countryDropdown, "Greece");
+        Thread.sleep(2000);
         selectByVisibleText(homePage.regionDropdown, "Attica");
         click(homePage.continueButton2);
     }
 
     @And("user adds In Payment Method and adds a comment")
-    public void userAddsInPaymentMethodAndAddsAComment(){
+    public void userAddsInPaymentMethodAndAddsAComment() {
         sendText(homePage.commentArea, "Comment has been loaded");
     }
 
@@ -76,12 +79,6 @@ public class Test1Steps extends CommonMethods {
         click(homePage.agreeButton);
         click(homePage.continueButton3);
     }
-
-//    @And("In Payment Method, user highlights the error message in Yellow")
-//    public void inPaymentMethodUserHighlightsTheErrorMessageInYellow() throws InterruptedException {
-//        Thread.sleep(4000);
-//        highlightText(homePage.errorMessage, "yellOw");
-//    }
 
     @Then("user Verify that {string} and closes the browser")
     public void userVerifyThatAndClosesTheBrowser(String expectedErrorMessage) {

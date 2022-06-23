@@ -2,9 +2,11 @@ package utils;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import pages.HomePage;
 import steps.PageInitializers;
 
 import java.io.File;
@@ -13,12 +15,12 @@ import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.Date;
 
-public class CommonMethods{ //extends PageInitializers
+public class CommonMethods { //extends PageInitializers
     public static WebDriver driver;
 
     public void launchBrowser() {
         driver = BrowserFactory.get();
-       // initializePageObjects();
+        // initializePageObjects();
     }
 
     public static void sendText(WebElement element, String textToSend) {
@@ -52,12 +54,12 @@ public class CommonMethods{ //extends PageInitializers
         return js;
     }
 
-    public static void highlightText(WebElement element, String color) {
-        getJSExecutor().executeScript("arguments[0].style.background='" + color.toLowerCase() + "'", element);
+    public static void highlightText(String color) {
+        HomePage homePage = PageFactory.initElements(driver, HomePage.class);
+        getJSExecutor().executeScript("arguments[0].style.background='" + color.toLowerCase() + "'", homePage.errorMessage);
     }
 
     public static void jsClick(WebElement element) {
-        waitForVisibility(element);
         getJSExecutor().executeScript("arguments[0].click;", element);
     }
 

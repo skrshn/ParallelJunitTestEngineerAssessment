@@ -75,7 +75,7 @@ public class HomePage extends CommonMethods {
     @FindBy(xpath = "//div[@class='alert alert-danger alert-dismissible']")
     public WebElement errorMessage;
 
-    public HomePage() {
-        PageFactory.initElements(driver, this);
-    }
+   // public HomePage() {
+//        PageFactory.initElements(driver, this);
+//    }
 }

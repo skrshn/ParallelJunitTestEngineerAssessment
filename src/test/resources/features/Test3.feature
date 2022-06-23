@@ -1,7 +1,7 @@
 Feature: Testing website
 
   @test1
-  Scenario: Testing Test2 with parallel testing
+  Scenario: Testing Test3 with parallel testing
     Given user navigates to tutorials ninja website and verify that the title is "Your Store"
     And user selects Laptops & Notebooks  From top menu
     And user selects Show All Laptops & Notebooks From dropdown menu
