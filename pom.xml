@@ -51,6 +51,11 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.0.0-M6</version>
                 <configuration>
+
+                    <parallel>methods</parallel>
+                    <perCoreThreadCount>false</perCoreThreadCount>
+                    <threadCountMethods>2</threadCountMethods>
+
                     <runOrder>Alphabetical</runOrder>
                     <includes>
                         <include>**/*CucumberRunner.java</include>
